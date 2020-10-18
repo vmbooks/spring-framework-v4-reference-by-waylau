@@ -1,1 +1,7 @@
-{"title":"Spring Framework 4.x参考文档"}
+{
+  "title":"Spring Framework 4.x参考文档",
+  "language": "zh-hans",
+	"plugins" :[
+		"theme-vmlite@git+https://github.com/vmlite/gitbook-plugin-theme-vmlite.git"
+	]
+}
