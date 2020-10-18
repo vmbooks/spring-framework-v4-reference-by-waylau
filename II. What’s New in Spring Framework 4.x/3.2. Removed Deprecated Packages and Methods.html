@@ -1,0 +1,4017 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>移除不推荐的包和方法 - Spring Framework 4.x参考文档 - 开源图书(OpenBooks)</title>
+        
+        <meta name="description" content="">
+        
+        
+        <script data-ad-client="ca-pub-9312750344484857" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitbook-plugin-theme-default@1.0.7/_assets/website/style.css">
+
+    
+            
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="//cdn.jsdelivr.net/npm/gitbook-plugin-theme-default@1.0.7/_assets/website/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="//cdn.jsdelivr.net/npm/gitbook-plugin-theme-default@1.0.7/_assets/website/images/favicon.ico" type="image/x-icon">
+
+    <link rel="next" href="3.3. Java 8  as well as 6 and 7.html" />
+    <link rel="prev" href="3.1. Improved Getting Started Experience.html" />
+
+    </head>
+    <body>
+        
+<div class="book">  
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+	<a href="/" class="btn pull-left" aria-label="开源图书(OpenBooks)"><i class="fa fa-home"></i></a>
+    
+
+    <!-- Title -->
+    <h1><i class="fa fa-circle-o-notch fa-spin"></i><a href=".." >移除不推荐的包和方法</a></h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-9312750344484857"
+                                     data-ad-slot="2669241897"
+                                     data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                     (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x79FB;&#x9664;&#x4E0D;&#x63A8;&#x8350;&#x7684;&#x5305;&#x548C;&#x65B9;&#x6CD5;">&#x79FB;&#x9664;&#x4E0D;&#x63A8;&#x8350;&#x7684;&#x5305;&#x548C;&#x65B9;&#x6CD5;</h1>
+<p>&#x6240;&#x6709;&#x8FC7;&#x65F6;&#x7684;&#x5305;&#x548C;&#x8BB8;&#x591A;&#x8FC7;&#x65F6;&#x7684;&#x7C7B;&#x548C;&#x65B9;&#x6CD5;&#x5DF2;&#x7ECF;&#x4ECE;Spring4&#x4E2D;&#x79FB;&#x9664;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4ECE;&#x4E4B;&#x524D;&#x7684;&#x53D1;&#x5E03;&#x7248;&#x5347;&#x7EA7;Spring&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x5DF2;&#x7ECF;&#x4FEE;&#x590D;&#x4E86;&#x6240;&#x6709;&#x4F7F;&#x7528;&#x8FC7;&#x65F6;&#x7684;API&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x67E5;&#x770B;&#x5B8C;&#x6574;&#x7684;&#x53D8;&#x5316;&#xFF1A; <a href="http://docs.spring.io/spring-framework/docs/3.2.4.RELEASE_to_4.0.0.RELEASE/" target="_blank">API&#x5DEE;&#x5F02;&#x62A5;&#x544A;</a>&#x3002;</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x6240;&#x6709;&#x53EF;&#x9009;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x90FD;&#x5DF2;&#x7ECF;&#x5347;&#x7EA7;&#x5230;&#x4E86;&#x6700;&#x4F4E;2010/2011(&#x4F8B;&#x5982;Spring4 &#x901A;&#x5E38;&#x53EA;&#x652F;&#x6301; 2010 &#x5E74;&#x7684;&#x6700;&#x65B0;&#x6216;&#x8005;&#x73B0;&#x5728;&#x7684;&#x6700;&#x65B0;&#x53D1;&#x5E03;&#x7248;&#x672C;):&#x5C24;&#x5176;&#x662F; Hibernate 3.6+&#x3001;EhCache 2.1+&#x3001;Quartz 1.8+&#x3001;Groovy 1.8+&#x3001;Joda-Time 2.0+&#x3002;&#x4F46;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x4F8B;&#x5916;&#xFF0C;Spring4&#x4F9D;&#x8D56;&#x6700;&#x8FD1;&#x7684;Hibernate Validator 4.3+&#xFF0C;&#x73B0;&#x5728;&#x5BF9;Jackson&#x7684;&#x652F;&#x6301;&#x96C6;&#x4E2D;&#x5728;2.0+&#x7248;&#x672C; (Spring3.2&#x652F;&#x6301;&#x7684;Jackson 1.8/1.9&#xFF0C;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x8FC7;&#x65F6;&#xFF09;&#x3002;</p>
+
+                                
+                                </section>
+                                <ins class="adsbygoogle"
+                                     style="display:block"
+                                     data-ad-client="ca-pub-9312750344484857"
+                                     data-ad-slot="2669241897"
+                                     data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                     (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>                                
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="3.1. Improved Getting Started Experience.html" class="navigation navigation-prev " aria-label="上一页: 改进的入门体验">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3.3. Java 8  as well as 6 and 7.html" class="navigation navigation-next " aria-label="下一页: Java 8(以及6和7)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            <a href="../">
+            
+                    
+                    Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../I. Overview of Spring Framework/">
+            <a href="../I. Overview of Spring Framework/">
+            
+                    
+                    I. Spring Framework 总览
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../I. Overview of Spring Framework/1. Getting Started with Spring.html">
+            <a href="../I. Overview of Spring Framework/1. Getting Started with Spring.html">
+            
+                    
+                    开始
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../I. Overview of Spring Framework/2. Introduction to the Spring Framework.html">
+            <a href="../I. Overview of Spring Framework/2. Introduction to the Spring Framework.html">
+            
+                    
+                    介绍 Spring Framework
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../I. Overview of Spring Framework/2.1. Dependency Injection and Inversion of Control.html">
+            <a href="../I. Overview of Spring Framework/2.1. Dependency Injection and Inversion of Control.html">
+            
+                    
+                    依赖注入和控制反转
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../I. Overview of Spring Framework/2.2. Modules.html">
+            <a href="../I. Overview of Spring Framework/2.2. Modules.html">
+            
+                    
+                    模块
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../I. Overview of Spring Framework/2.3. Usage scenarios.html">
+            <a href="../I. Overview of Spring Framework/2.3. Usage scenarios.html">
+            
+                    
+                    使用场景
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    II. Spring Framework 4.x 新特性
+            </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="3. New Features and Enhancements in Spring Framework 4.0.html">
+            <a href="3. New Features and Enhancements in Spring Framework 4.0.html">
+            
+                    
+                    Spring Framework 4.0中的新功能和增强功能
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="3.1. Improved Getting Started Experience.html">
+            <a href="3.1. Improved Getting Started Experience.html">
+            
+                    
+                    改进的入门体验
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.2" data-path="3.2. Removed Deprecated Packages and Methods.html">
+            <a href="3.2. Removed Deprecated Packages and Methods.html">
+            
+                    
+                    移除不推荐的包和方法
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="3.3. Java 8  as well as 6 and 7.html">
+            <a href="3.3. Java 8  as well as 6 and 7.html">
+            
+                    
+                    Java 8(以及6和7)
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="3.4. Java EE 6 and 7.html">
+            <a href="3.4. Java EE 6 and 7.html">
+            
+                    
+                    Java EE 6 和 7
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="3.5. Groovy Bean Definition DSL.html">
+            <a href="3.5. Groovy Bean Definition DSL.html">
+            
+                    
+                    Groovy Bean Definition DSL
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.6" data-path="3.6. Core Container Improvement.html">
+            <a href="3.6. Core Container Improvement.html">
+            
+                    
+                    核心容器改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.7" data-path="3.7. General Web Improvements.html">
+            <a href="3.7. General Web Improvements.html">
+            
+                    
+                    常规Web改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.8" data-path="3.8. WebSocket, SockJS, and STOMP Messaging.html">
+            <a href="3.8. WebSocket, SockJS, and STOMP Messaging.html">
+            
+                    
+                    WebSocket, SockJS, 和 STOMP 消息
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.9" data-path="3.9. Testing Improvements.html">
+            <a href="3.9. Testing Improvements.html">
+            
+                    
+                    测试改进
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    Spring Framework 4.1中的新功能和增强功能
+            </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="4.1. JMS Improvements.html">
+            <a href="4.1. JMS Improvements.html">
+            
+                    
+                    JMS 改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="4.2. Caching Improvement.html">
+            <a href="4.2. Caching Improvement.html">
+            
+                    
+                    缓存改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="4.3. Web Improvements.html">
+            <a href="4.3. Web Improvements.html">
+            
+                    
+                    Web 改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="4.4. WebSocket STOMP Messaging Improvements.html">
+            <a href="4.4. WebSocket STOMP Messaging Improvements.html">
+            
+                    
+                    WebSocket STOMP 消息  改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="4.5. Testing Improvements.html">
+            <a href="4.5. Testing Improvements.html">
+            
+                    
+                    测试 改进
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    Spring Framework 4.2中的新功能和增强功能
+            </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="5.1. Core Container Improvements.html">
+            <a href="5.1. Core Container Improvements.html">
+            
+                    
+                    核心容器改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="5.2 Data Access Improvements.html">
+            <a href="5.2 Data Access Improvements.html">
+            
+                    
+                    数据访问改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="5.3. JMS Improvements.html">
+            <a href="5.3. JMS Improvements.html">
+            
+                    
+                    JMS 改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.4" data-path="5.4. Web Improvements.html">
+            <a href="5.4. Web Improvements.html">
+            
+                    
+                    Web 改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.5" data-path="5.5. WebSocket Messaging Improvements.html">
+            <a href="5.5. WebSocket Messaging Improvements.html">
+            
+                    
+                    WebSocket 消息改进
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.6" data-path="5.6. Testing Improvements.html">
+            <a href="5.6. Testing Improvements.html">
+            
+                    
+                    测试改进
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="New Features and Enhancements in Spring Framework 4.3.html">
+            <a href="New Features and Enhancements in Spring Framework 4.3.html">
+            
+                    
+                    Spring Framework 4.3中的新功能和增强功能
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../III. Core Technologies/">
+            <a href="../III. Core Technologies/">
+            
+                    
+                    III. 核心技术
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    IoC 容器
+            </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../III. Core Technologies/Introduction to the Spring IoC container and beans.html">
+            <a href="../III. Core Technologies/Introduction to the Spring IoC container and beans.html">
+            
+                    
+                    介绍  Spring IoC 容器和 bean
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../III. Core Technologies/Container overview.html">
+            <a href="../III. Core Technologies/Container overview.html">
+            
+                    
+                    容器总览
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../III. Core Technologies/Bean overview.html">
+            <a href="../III. Core Technologies/Bean overview.html">
+            
+                    
+                    Bean 总览
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../III. Core Technologies/Dependencies.html">
+            <a href="../III. Core Technologies/Dependencies.html">
+            
+                    
+                    依赖
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../III. Core Technologies/Bean scopes.html">
+            <a href="../III. Core Technologies/Bean scopes.html">
+            
+                    
+                    Bean作用域
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="../III. Core Technologies/Customizing the nature of a bean.html">
+            <a href="../III. Core Technologies/Customizing the nature of a bean.html">
+            
+                    
+                    定制Bean的回调函数
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="../III. Core Technologies/Bean definition inheritance.html">
+            <a href="../III. Core Technologies/Bean definition inheritance.html">
+            
+                    
+                    Bean definition inheritance
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.8" data-path="../III. Core Technologies/Container Extension Points.html">
+            <a href="../III. Core Technologies/Container Extension Points.html">
+            
+                    
+                    容器扩展点
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.9" data-path="../III. Core Technologies/Classpath scanning and managed components.html">
+            <a href="../III. Core Technologies/Classpath scanning and managed components.html">
+            
+                    
+                    Classpath扫描和管理组件
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.10" data-path="../III. Core Technologies/Using JSR 330 Standard Annotations.html">
+            <a href="../III. Core Technologies/Using JSR 330 Standard Annotations.html">
+            
+                    
+                    使用JSR 330标准注解
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.11" data-path="../III. Core Technologies/Java-based container configuration.html">
+            <a href="../III. Core Technologies/Java-based container configuration.html">
+            
+                    
+                    基于Java的容器配置
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.12" data-path="../III. Core Technologies/Environment abstraction.html">
+            <a href="../III. Core Technologies/Environment abstraction.html">
+            
+                    
+                    环境的抽象
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.13" data-path="../III. Core Technologies/5.14. Registering a LoadTimeWeaver.html">
+            <a href="../III. Core Technologies/5.14. Registering a LoadTimeWeaver.html">
+            
+                    
+                    5.14. Registering a LoadTimeWeaver
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.14" data-path="../III. Core Technologies/5.15. Additional Capabilities of the ApplicationContex.html">
+            <a href="../III. Core Technologies/5.15. Additional Capabilities of the ApplicationContex.html">
+            
+                    
+                    5.15. Additional Capabilities of the ApplicationContext
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.15" data-path="../III. Core Technologies/5.16. The BeanFactory.html">
+            <a href="../III. Core Technologies/5.16. The BeanFactory.html">
+            
+                    
+                    5.16. The BeanFactory
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../III. Core Technologies/6. Resources.html">
+            <a href="../III. Core Technologies/6. Resources.html">
+            
+                    
+                    6. Resources
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../III. Core Technologies/6.1. Introduction.html">
+            <a href="../III. Core Technologies/6.1. Introduction.html">
+            
+                    
+                    6.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../III. Core Technologies/6.2. The Resource interface.html">
+            <a href="../III. Core Technologies/6.2. The Resource interface.html">
+            
+                    
+                    6.2. The Resource interface
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../III. Core Technologies/6.3. Built-in Resource implementations.html">
+            <a href="../III. Core Technologies/6.3. Built-in Resource implementations.html">
+            
+                    
+                    6.3. Built-in Resource implementations
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../III. Core Technologies/6.4. The ResourceLoader.html">
+            <a href="../III. Core Technologies/6.4. The ResourceLoader.html">
+            
+                    
+                    6.4. The ResourceLoader
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="../III. Core Technologies/6.5. The ResourceLoaderAware interface.html">
+            <a href="../III. Core Technologies/6.5. The ResourceLoaderAware interface.html">
+            
+                    
+                    6.5. The ResourceLoaderAware interface
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="../III. Core Technologies/6.6. Resources as dependencies.html">
+            <a href="../III. Core Technologies/6.6. Resources as dependencies.html">
+            
+                    
+                    6.6. Resources as dependencies
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.7" data-path="../III. Core Technologies/6.7. Application contexts and Resource paths.html">
+            <a href="../III. Core Technologies/6.7. Application contexts and Resource paths.html">
+            
+                    
+                    6.7. Application contexts and Resource paths
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../III. Core Technologies/7. Validation, Data Binding, and Type Conversion.html">
+            <a href="../III. Core Technologies/7. Validation, Data Binding, and Type Conversion.html">
+            
+                    
+                    7. Validation, Data Binding, and Type Conversion
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../III. Core Technologies/7.1. Introduction.html">
+            <a href="../III. Core Technologies/7.1. Introduction.html">
+            
+                    
+                    7.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../III. Core Technologies/7.2. Validation using Spring’s Validator interface.html">
+            <a href="../III. Core Technologies/7.2. Validation using Spring’s Validator interface.html">
+            
+                    
+                    7.2. Validation using Spring’s Validator interface
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.3" data-path="../III. Core Technologies/7.3. Resolving codes to error messages.html">
+            <a href="../III. Core Technologies/7.3. Resolving codes to error messages.html">
+            
+                    
+                    7.3. Resolving codes to error messages
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.4" data-path="../III. Core Technologies/7.4. Bean manipulation and the BeanWrapper.html">
+            <a href="../III. Core Technologies/7.4. Bean manipulation and the BeanWrapper.html">
+            
+                    
+                    7.4. Bean manipulation and the BeanWrapper
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.5" data-path="../III. Core Technologies/7.5. Spring Type Conversion.html">
+            <a href="../III. Core Technologies/7.5. Spring Type Conversion.html">
+            
+                    
+                    7.5. Spring Type Conversion
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.6" data-path="../III. Core Technologies/7.6. Spring Field Formatting.html">
+            <a href="../III. Core Technologies/7.6. Spring Field Formatting.html">
+            
+                    
+                    7.6. Spring Field Formatting
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.7" data-path="../III. Core Technologies/7.7. Configuring a global date & time format.html">
+            <a href="../III. Core Technologies/7.7. Configuring a global date & time format.html">
+            
+                    
+                    7.7. Configuring a global date & time format
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.8" data-path="../III. Core Technologies/7.8. Spring Validation.html">
+            <a href="../III. Core Technologies/7.8. Spring Validation.html">
+            
+                    
+                    7.8. Spring Validation
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../III. Core Technologies/9. Spring Expression Language-SpEL.html">
+            <a href="../III. Core Technologies/9. Spring Expression Language-SpEL.html">
+            
+                    
+                    Spring Expression Language-SpEL
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../III. Core Technologies/8.1. Introduction.html">
+            <a href="../III. Core Technologies/8.1. Introduction.html">
+            
+                    
+                    8.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../III. Core Technologies/8.2. Feature Overview.html">
+            <a href="../III. Core Technologies/8.2. Feature Overview.html">
+            
+                    
+                    8.2. Feature Overview
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../III. Core Technologies/8.3. Expression Evaluation using Spring’s Expression Interface.html">
+            <a href="../III. Core Technologies/8.3. Expression Evaluation using Spring’s Expression Interface.html">
+            
+                    
+                    8.3. Expression Evaluation using Spring’s Expression Interface
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.4" data-path="../III. Core Technologies/8.4. Expression support for defining bean definitions.html">
+            <a href="../III. Core Technologies/8.4. Expression support for defining bean definitions.html">
+            
+                    
+                    8.4. Expression support for defining bean definitions
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.5" data-path="../III. Core Technologies/8.5. Language Reference.html">
+            <a href="../III. Core Technologies/8.5. Language Reference.html">
+            
+                    
+                    8.5. Language Reference
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.6" data-path="../III. Core Technologies/8.6. Classes used in the examples.html">
+            <a href="../III. Core Technologies/8.6. Classes used in the examples.html">
+            
+                    
+                    8.6. Classes used in the examples
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../III. Core Technologies/10. Aspect Oriented Programming with Spring.html">
+            <a href="../III. Core Technologies/10. Aspect Oriented Programming with Spring.html">
+            
+                    
+                    Spring AOP 编程
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.5.1" data-path="../III. Core Technologies/9.1. Introduction.html">
+            <a href="../III. Core Technologies/9.1. Introduction.html">
+            
+                    
+                    10.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.2" data-path="../III. Core Technologies/9.2. @AspectJ support.html">
+            <a href="../III. Core Technologies/9.2. @AspectJ support.html">
+            
+                    
+                    10.2. @AspectJ support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.3" data-path="../III. Core Technologies/9.3. Schema-based AOP support.html">
+            <a href="../III. Core Technologies/9.3. Schema-based AOP support.html">
+            
+                    
+                    9.3. Schema-based AOP support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.4" data-path="../III. Core Technologies/9.4. Choosing which AOP declaration style to use.html">
+            <a href="../III. Core Technologies/9.4. Choosing which AOP declaration style to use.html">
+            
+                    
+                    9.4. Choosing which AOP declaration style to use
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.5" data-path="../III. Core Technologies/9.5. Mixing aspect types.html">
+            <a href="../III. Core Technologies/9.5. Mixing aspect types.html">
+            
+                    
+                    9.5. Mixing aspect types
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.6" data-path="../III. Core Technologies/9.6. Proxying mechanisms.html">
+            <a href="../III. Core Technologies/9.6. Proxying mechanisms.html">
+            
+                    
+                    9.6. Proxying mechanisms
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.7" data-path="../III. Core Technologies/9.7. Programmatic creation of @AspectJ Proxies.html">
+            <a href="../III. Core Technologies/9.7. Programmatic creation of @AspectJ Proxies.html">
+            
+                    
+                    9.7. Programmatic creation of @AspectJ Proxies
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.8" data-path="../III. Core Technologies/9.8. Using AspectJ with Spring applications.html">
+            <a href="../III. Core Technologies/9.8. Using AspectJ with Spring applications.html">
+            
+                    
+                    9.8. Using AspectJ with Spring applications
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.9" data-path="../III. Core Technologies/9.9. Further Resources.html">
+            <a href="../III. Core Technologies/9.9. Further Resources.html">
+            
+                    
+                    9.9. Further Resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../III. Core Technologies/10. Spring AOP APIs.html">
+            <a href="../III. Core Technologies/10. Spring AOP APIs.html">
+            
+                    
+                    10. Spring AOP APIs
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.6.1" data-path="../III. Core Technologies/10.1. Introduction.html">
+            <a href="../III. Core Technologies/10.1. Introduction.html">
+            
+                    
+                    10.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.2" data-path="../III. Core Technologies/10.2. Pointcut API in Spring.html">
+            <a href="../III. Core Technologies/10.2. Pointcut API in Spring.html">
+            
+                    
+                    10.2. Pointcut API in Spring
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.3" data-path="../III. Core Technologies/10.3. Advice API in Spring.html">
+            <a href="../III. Core Technologies/10.3. Advice API in Spring.html">
+            
+                    
+                    10.3. Advice API in Spring
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.4" data-path="../III. Core Technologies/10.4. Advisor API in Spring.html">
+            <a href="../III. Core Technologies/10.4. Advisor API in Spring.html">
+            
+                    
+                    10.4. Advisor API in Spring
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.5" data-path="../III. Core Technologies/10.5. Using the ProxyFactoryBean to create AOP proxies.html">
+            <a href="../III. Core Technologies/10.5. Using the ProxyFactoryBean to create AOP proxies.html">
+            
+                    
+                    10.5. Using the ProxyFactoryBean to create AOP proxies
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.6" data-path="../III. Core Technologies/10.6. Concise proxy definitions.html">
+            <a href="../III. Core Technologies/10.6. Concise proxy definitions.html">
+            
+                    
+                    10.6. Concise proxy definitions
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.7" data-path="../III. Core Technologies/10.7. Creating AOP proxies programmatically with the ProxyFactory.html">
+            <a href="../III. Core Technologies/10.7. Creating AOP proxies programmatically with the ProxyFactory.html">
+            
+                    
+                    10.7. Creating AOP proxies programmatically with the ProxyFactory
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.8" data-path="../III. Core Technologies/10.8. Manipulating advised objects.html">
+            <a href="../III. Core Technologies/10.8. Manipulating advised objects.html">
+            
+                    
+                    10.8. Manipulating advised objects
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.9" data-path="../III. Core Technologies/10.9. Using the `auto-proxy` facility.html">
+            <a href="../III. Core Technologies/10.9. Using the `auto-proxy` facility.html">
+            
+                    
+                    10.9. Using the "auto-proxy" facility
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.10" data-path="../III. Core Technologies/10.10. Using TargetSources.html">
+            <a href="../III. Core Technologies/10.10. Using TargetSources.html">
+            
+                    
+                    10.10. Using TargetSources
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.11" data-path="../III. Core Technologies/10.11. Defining new Advice types.html">
+            <a href="../III. Core Technologies/10.11. Defining new Advice types.html">
+            
+                    
+                    10.11. Defining new Advice types
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6.12" data-path="../III. Core Technologies/10.12. Further resources.html">
+            <a href="../III. Core Technologies/10.12. Further resources.html">
+            
+                    
+                    10.12. Further resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../III. Core Technologies/11. Testing.html">
+            <a href="../III. Core Technologies/11. Testing.html">
+            
+                    
+                    11. Testing
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.7.1" data-path="../III. Core Technologies/11.1. Introduction to Spring Testing.html">
+            <a href="../III. Core Technologies/11.1. Introduction to Spring Testing.html">
+            
+                    
+                    11.1. Introduction to Spring Testing
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7.2" data-path="../III. Core Technologies/11.2. Unit Testing.html">
+            <a href="../III. Core Technologies/11.2. Unit Testing.html">
+            
+                    
+                    11.2. Unit Testing
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7.3" data-path="../III. Core Technologies/11.3. Integration Testing.html">
+            <a href="../III. Core Technologies/11.3. Integration Testing.html">
+            
+                    
+                    11.3. Integration Testing
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7.4" data-path="../III. Core Technologies/11.4. Further Resources.html">
+            <a href="../III. Core Technologies/11.4. Further Resources.html">
+            
+                    
+                    11.4. Further Resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../IV. Data Access/">
+            <a href="../IV. Data Access/">
+            
+                    
+                    IV. 数据访问
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../IV. Data Access/12. Transaction Management.html">
+            <a href="../IV. Data Access/12. Transaction Management.html">
+            
+                    
+                    12. Transaction Management
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../IV. Data Access/12.1. Introduction to Spring Framework transaction management.html">
+            <a href="../IV. Data Access/12.1. Introduction to Spring Framework transaction management.html">
+            
+                    
+                    12.1. Introduction to Spring Framework transaction management
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../IV. Data Access/12.2. Advantages of the Spring Framework’s transaction support model.html">
+            <a href="../IV. Data Access/12.2. Advantages of the Spring Framework’s transaction support model.html">
+            
+                    
+                    12.2. Advantages of the Spring Framework’s transaction support model
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../IV. Data Access/12.3. Understanding the Spring Framework transaction abstraction.html">
+            <a href="../IV. Data Access/12.3. Understanding the Spring Framework transaction abstraction.html">
+            
+                    
+                    12.3. Understanding the Spring Framework transaction abstraction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../IV. Data Access/12.4. Synchronizing resources with transactions.html">
+            <a href="../IV. Data Access/12.4. Synchronizing resources with transactions.html">
+            
+                    
+                    12.4. Synchronizing resources with transactions
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.5" data-path="../IV. Data Access/12.5. Declarative transaction management.html">
+            <a href="../IV. Data Access/12.5. Declarative transaction management.html">
+            
+                    
+                    12.5. Declarative transaction management
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.6" data-path="../IV. Data Access/12.6. Programmatic transaction management.html">
+            <a href="../IV. Data Access/12.6. Programmatic transaction management.html">
+            
+                    
+                    12.6. Programmatic transaction management
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.7" data-path="../IV. Data Access/12.7. Choosing between programmatic and declarative transaction management.html">
+            <a href="../IV. Data Access/12.7. Choosing between programmatic and declarative transaction management.html">
+            
+                    
+                    12.7. Choosing between programmatic and declarative transaction management
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.8" data-path="../IV. Data Access/12.8. Application server-specific integration.html">
+            <a href="../IV. Data Access/12.8. Application server-specific integration.html">
+            
+                    
+                    12.8. Application server-specific integration
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.9" data-path="../IV. Data Access/12.9. Solutions to common problems.html">
+            <a href="../IV. Data Access/12.9. Solutions to common problems.html">
+            
+                    
+                    12.9. Solutions to common problems
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.10" data-path="../IV. Data Access/12.10. Further Resources.html">
+            <a href="../IV. Data Access/12.10. Further Resources.html">
+            
+                    
+                    12.10. Further Resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../IV. Data Access/13. DAO support.html">
+            <a href="../IV. Data Access/13. DAO support.html">
+            
+                    
+                    13. DAO support
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../IV. Data Access/13.1. Introduction.html">
+            <a href="../IV. Data Access/13.1. Introduction.html">
+            
+                    
+                    13.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../IV. Data Access/13.2. Consistent exception hierarchy.html">
+            <a href="../IV. Data Access/13.2. Consistent exception hierarchy.html">
+            
+                    
+                    13.2. Consistent exception hierarchy
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../IV. Data Access/13.3. Annotations used for configuring DAO or Repository classes.html">
+            <a href="../IV. Data Access/13.3. Annotations used for configuring DAO or Repository classes.html">
+            
+                    
+                    13.3. Annotations used for configuring DAO or Repository classes
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../IV. Data Access/14. Data access with JDBC.html">
+            <a href="../IV. Data Access/14. Data access with JDBC.html">
+            
+                    
+                    14. Data access with JDBC
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../IV. Data Access/14.1. Introduction to Spring Framework JDBC.html">
+            <a href="../IV. Data Access/14.1. Introduction to Spring Framework JDBC.html">
+            
+                    
+                    14.1. Introduction to Spring Framework JDBC
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../IV. Data Access/14.2. Using the JDBC core classes to control basic JDBC processing and error handling.html">
+            <a href="../IV. Data Access/14.2. Using the JDBC core classes to control basic JDBC processing and error handling.html">
+            
+                    
+                    14.2. Using the JDBC core classes to control basic JDBC processing and error handling
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="../IV. Data Access/14.3. Controlling database connections.html">
+            <a href="../IV. Data Access/14.3. Controlling database connections.html">
+            
+                    
+                    14.3. Controlling database connections
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="../IV. Data Access/14.4. JDBC batch operations.html">
+            <a href="../IV. Data Access/14.4. JDBC batch operations.html">
+            
+                    
+                    14.4. JDBC batch operations
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.5" data-path="../IV. Data Access/14.5. Simplifying JDBC operations with the SimpleJdbc classes.html">
+            <a href="../IV. Data Access/14.5. Simplifying JDBC operations with the SimpleJdbc classes.html">
+            
+                    
+                    14.5. Simplifying JDBC operations with the SimpleJdbc classes
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.6" data-path="../IV. Data Access/14.6. Modeling JDBC operations as Java objects.html">
+            <a href="../IV. Data Access/14.6. Modeling JDBC operations as Java objects.html">
+            
+                    
+                    14.6. Modeling JDBC operations as Java objects
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.7" data-path="../IV. Data Access/14.7. Common problems with parameter and data value handling.html">
+            <a href="../IV. Data Access/14.7. Common problems with parameter and data value handling.html">
+            
+                    
+                    14.7. Common problems with parameter and data value handling
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.8" data-path="../IV. Data Access/14.8. Embedded database support.html">
+            <a href="../IV. Data Access/14.8. Embedded database support.html">
+            
+                    
+                    14.8. Embedded database support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.9" data-path="../IV. Data Access/14.9. Initializing a DataSource.html">
+            <a href="../IV. Data Access/14.9. Initializing a DataSource.html">
+            
+                    
+                    14.9. Initializing a DataSource
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../IV. Data Access/15. Object Relational Mapping Data Access.html">
+            <a href="../IV. Data Access/15. Object Relational Mapping Data Access.html">
+            
+                    
+                    15. 对象关系映射(ORM)数据访问
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../IV. Data Access/15.1. Introduction to ORM with Spring.html">
+            <a href="../IV. Data Access/15.1. Introduction to ORM with Spring.html">
+            
+                    
+                    15.1. Spring 中的 ORM
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../IV. Data Access/15.2. General ORM integration considerations.html">
+            <a href="../IV. Data Access/15.2. General ORM integration considerations.html">
+            
+                    
+                    15.2. 常见的 ORM 集成方面的注意事项
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../IV. Data Access/15.3. Hibernate.html">
+            <a href="../IV. Data Access/15.3. Hibernate.html">
+            
+                    
+                    15.3. Hibernate
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.4" data-path="../IV. Data Access/15.4. JDO.html">
+            <a href="../IV. Data Access/15.4. JDO.html">
+            
+                    
+                    15.4. JDO
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.5" data-path="../IV. Data Access/15.5. JPA.html">
+            <a href="../IV. Data Access/15.5. JPA.html">
+            
+                    
+                    15.5. JPA
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../IV. Data Access/16. Marshalling XML using OX Mappers.html">
+            <a href="../IV. Data Access/16. Marshalling XML using OX Mappers.html">
+            
+                    
+                    16. Marshalling XML using O/X Mappers
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="../IV. Data Access/16.1. Introduction.html">
+            <a href="../IV. Data Access/16.1. Introduction.html">
+            
+                    
+                    16.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2" data-path="../IV. Data Access/16.2. Marshaller and Unmarshaller.html">
+            <a href="../IV. Data Access/16.2. Marshaller and Unmarshaller.html">
+            
+                    
+                    16.2. Marshaller and Unmarshaller
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.3" data-path="../IV. Data Access/16.3. Using Marshaller and Unmarshaller.html">
+            <a href="../IV. Data Access/16.3. Using Marshaller and Unmarshaller.html">
+            
+                    
+                    16.3. Using Marshaller and Unmarshaller
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.4" data-path="../IV. Data Access/16.4. XML Schema-based Configuration.html">
+            <a href="../IV. Data Access/16.4. XML Schema-based Configuration.html">
+            
+                    
+                    16.4. XML Schema-based Configuration
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.5" data-path="../IV. Data Access/16.5. JAXB.html">
+            <a href="../IV. Data Access/16.5. JAXB.html">
+            
+                    
+                    16.5. JAXB
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.6" data-path="../IV. Data Access/16.6. Castor.html">
+            <a href="../IV. Data Access/16.6. Castor.html">
+            
+                    
+                    16.6. Castor
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.7" data-path="../IV. Data Access/16.7. XMLBeans.html">
+            <a href="../IV. Data Access/16.7. XMLBeans.html">
+            
+                    
+                    16.7. XMLBeans
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.8" data-path="../IV. Data Access/16.8. JiBX.html">
+            <a href="../IV. Data Access/16.8. JiBX.html">
+            
+                    
+                    16.8. JiBX
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.9" data-path="../IV. Data Access/16.9. XStream.html">
+            <a href="../IV. Data Access/16.9. XStream.html">
+            
+                    
+                    16.9. XStream
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../V. The Web/">
+            <a href="../V. The Web/">
+            
+                    
+                    V. The Web
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../V. The Web/17. Web MVC framework.html">
+            <a href="../V. The Web/17. Web MVC framework.html">
+            
+                    
+                    17. Web MVC framework
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../V. The Web/17.1. Introduction to Spring Web MVC framework.html">
+            <a href="../V. The Web/17.1. Introduction to Spring Web MVC framework.html">
+            
+                    
+                    17.1. Introduction to Spring Web MVC framework
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="../V. The Web/17.2. The DispatcherServlet.html">
+            <a href="../V. The Web/17.2. The DispatcherServlet.html">
+            
+                    
+                    17.2. The DispatcherServlet
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" data-path="../V. The Web/17.3. Implementing Controllers.html">
+            <a href="../V. The Web/17.3. Implementing Controllers.html">
+            
+                    
+                    17.3. Implementing Controllers
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.4" data-path="../V. The Web/17.4. Handler mappings.html">
+            <a href="../V. The Web/17.4. Handler mappings.html">
+            
+                    
+                    17.4. Handler mappings
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.5" data-path="../V. The Web/17.5. Resolving views.html">
+            <a href="../V. The Web/17.5. Resolving views.html">
+            
+                    
+                    17.5. Resolving views
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.6" data-path="../V. The Web/17.6. Using flash attributes.html">
+            <a href="../V. The Web/17.6. Using flash attributes.html">
+            
+                    
+                    17.6. Using flash attributes
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.7" data-path="../V. The Web/17.7. Building URIs.html">
+            <a href="../V. The Web/17.7. Building URIs.html">
+            
+                    
+                    17.7. Building URIs
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.8" data-path="../V. The Web/17.8. Using locales.html">
+            <a href="../V. The Web/17.8. Using locales.html">
+            
+                    
+                    17.8. Using locales
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.9" data-path="../V. The Web/">
+            <a href="../V. The Web/">
+            
+                    
+                    17.9. Using themes
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.10" data-path="../V. The Web/17.10. Spring’s multipart file upload support.html">
+            <a href="../V. The Web/17.10. Spring’s multipart file upload support.html">
+            
+                    
+                    17.10. Spring’s multipart (file upload) support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.11" data-path="../V. The Web/17.11. Handling exceptions.html">
+            <a href="../V. The Web/17.11. Handling exceptions.html">
+            
+                    
+                    17.11. Handling exceptions
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.12" data-path="../V. The Web/17.12. Web Security.html">
+            <a href="../V. The Web/17.12. Web Security.html">
+            
+                    
+                    17.12. Web Security
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.13" data-path="../V. The Web/17.13. Convention over configuration support.html">
+            <a href="../V. The Web/17.13. Convention over configuration support.html">
+            
+                    
+                    17.13. Convention over configuration support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.14" data-path="../V. The Web/17.14. ETag support.html">
+            <a href="../V. The Web/17.14. ETag support.html">
+            
+                    
+                    17.14. ETag support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.15" data-path="../V. The Web/17.15. Code-based Servlet container initialization.html">
+            <a href="../V. The Web/17.15. Code-based Servlet container initialization.html">
+            
+                    
+                    17.15. Code-based Servlet container initialization
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.16" data-path="../V. The Web/17.16. Configuring Spring MVC.html">
+            <a href="../V. The Web/17.16. Configuring Spring MVC.html">
+            
+                    
+                    17.16. Configuring Spring MVC
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../V. The Web/18. View technologies.html">
+            <a href="../V. The Web/18. View technologies.html">
+            
+                    
+                    18. View technologies
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../V. The Web/18.1. Introduction.html">
+            <a href="../V. The Web/18.1. Introduction.html">
+            
+                    
+                    18.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../V. The Web/18.2. JSP & JSTL.html">
+            <a href="../V. The Web/18.2. JSP & JSTL.html">
+            
+                    
+                    18.2. JSP & JSTL
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../V. The Web/18.3. Tiles.html">
+            <a href="../V. The Web/18.3. Tiles.html">
+            
+                    
+                    18.3. Tiles
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.4" data-path="../V. The Web/18.4. Velocity & FreeMarker.html">
+            <a href="../V. The Web/18.4. Velocity & FreeMarker.html">
+            
+                    
+                    18.4. Velocity & FreeMarker
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.5" data-path="../V. The Web/18.5. XSLT.html">
+            <a href="../V. The Web/18.5. XSLT.html">
+            
+                    
+                    18.5. XSLT
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.6" data-path="../V. The Web/18.6. Document views PDF、Excel.html">
+            <a href="../V. The Web/18.6. Document views PDF、Excel.html">
+            
+                    
+                    18.6. Document views (PDF/Excel)
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.7" data-path="../V. The Web/18.7. JasperReports.html">
+            <a href="../V. The Web/18.7. JasperReports.html">
+            
+                    
+                    18.7. JasperReports
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.8" data-path="../V. The Web/18.8. Feed Views.html">
+            <a href="../V. The Web/18.8. Feed Views.html">
+            
+                    
+                    18.8. Feed Views
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.9" data-path="../V. The Web/18.9. XML Marshalling View.html">
+            <a href="../V. The Web/18.9. XML Marshalling View.html">
+            
+                    
+                    18.9. XML Marshalling View
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.10" data-path="../V. The Web/18.10. JSON Mapping View.html">
+            <a href="../V. The Web/18.10. JSON Mapping View.html">
+            
+                    
+                    18.10. JSON Mapping View
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.11" data-path="../V. The Web/18.11. XML Mapping View.html">
+            <a href="../V. The Web/18.11. XML Mapping View.html">
+            
+                    
+                    18.11. XML Mapping View
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../V. The Web/19. Integrating with other web frameworks.html">
+            <a href="../V. The Web/19. Integrating with other web frameworks.html">
+            
+                    
+                    19. Integrating with other web frameworks
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../V. The Web/19.1. Introduction.html">
+            <a href="../V. The Web/19.1. Introduction.html">
+            
+                    
+                    19.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../V. The Web/19.2. Common configuration.html">
+            <a href="../V. The Web/19.2. Common configuration.html">
+            
+                    
+                    19.2. Common configuration
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../V. The Web/19.3. JavaServer Faces 1.2.html">
+            <a href="../V. The Web/19.3. JavaServer Faces 1.2.html">
+            
+                    
+                    19.3. JavaServer Faces 1.2
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../V. The Web/19.4. Apache Struts 2.x.html">
+            <a href="../V. The Web/19.4. Apache Struts 2.x.html">
+            
+                    
+                    19.4. Apache Struts 2.x
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.5" data-path="../V. The Web/19.5. Tapestry 5.x.html">
+            <a href="../V. The Web/19.5. Tapestry 5.x.html">
+            
+                    
+                    19.5. Tapestry 5.x
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.6" data-path="../V. The Web/19.6. Further Resources.html">
+            <a href="../V. The Web/19.6. Further Resources.html">
+            
+                    
+                    19.6. Further Resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../V. The Web/20. Portlet MVC Framework.html">
+            <a href="../V. The Web/20. Portlet MVC Framework.html">
+            
+                    
+                    20. Portlet MVC Framework
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../V. The Web/20.1. Introduction.html">
+            <a href="../V. The Web/20.1. Introduction.html">
+            
+                    
+                    20.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../V. The Web/20.2. The DispatcherPortlet.html">
+            <a href="../V. The Web/20.2. The DispatcherPortlet.html">
+            
+                    
+                    20.2. The DispatcherPortlet
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../V. The Web/20.3. The ViewRendererServlet.html">
+            <a href="../V. The Web/20.3. The ViewRendererServlet.html">
+            
+                    
+                    20.3. The ViewRendererServlet
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.4" data-path="../V. The Web/20.4. Controllers.html">
+            <a href="../V. The Web/20.4. Controllers.html">
+            
+                    
+                    20.4. Controllers
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.5" data-path="../V. The Web/20.5. Handler mappings.html">
+            <a href="../V. The Web/20.5. Handler mappings.html">
+            
+                    
+                    20.5. Handler mappings
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.6" data-path="../V. The Web/20.6. Views and resolving them.html">
+            <a href="../V. The Web/20.6. Views and resolving them.html">
+            
+                    
+                    20.6. Views and resolving them
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.7" data-path="../V. The Web/20.7. Multipart file upload support.html">
+            <a href="../V. The Web/20.7. Multipart file upload support.html">
+            
+                    
+                    20.7. Multipart (file upload) support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.8" data-path="../V. The Web/20.8. Handling exceptions.html">
+            <a href="../V. The Web/20.8. Handling exceptions.html">
+            
+                    
+                    20.8. Handling exceptions
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.9" data-path="../V. The Web/20.9. Annotation-based controller configuration.html">
+            <a href="../V. The Web/20.9. Annotation-based controller configuration.html">
+            
+                    
+                    20.9. Annotation-based controller configuration
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.10" data-path="../V. The Web/20.10. Portlet application deployment.html">
+            <a href="../V. The Web/20.10. Portlet application deployment.html">
+            
+                    
+                    20.10. Portlet application deployment
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../V. The Web/21. WebSocket Support.html">
+            <a href="../V. The Web/21. WebSocket Support.html">
+            
+                    
+                    21. WebSocket Support
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.5.1" data-path="../V. The Web/21.1. Introduction.html">
+            <a href="../V. The Web/21.1. Introduction.html">
+            
+                    
+                    21.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.2" data-path="../V. The Web/21.2. WebSocket API.html">
+            <a href="../V. The Web/21.2. WebSocket API.html">
+            
+                    
+                    21.2. WebSocket API
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.3" data-path="../V. The Web/21.3. SockJS Fallback Options.html">
+            <a href="../V. The Web/21.3. SockJS Fallback Options.html">
+            
+                    
+                    21.3. SockJS Fallback Options
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.4" data-path="../V. The Web/21.4. STOMP Over WebSocket Messaging Architecture.html">
+            <a href="../V. The Web/21.4. STOMP Over WebSocket Messaging Architecture.html">
+            
+                    
+                    21.4. STOMP Over WebSocket Messaging Architecture
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../VI. Integration/">
+            <a href="../VI. Integration/">
+            
+                    
+                    VI. Integration
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../VI. Integration/22. Remoting and web services using Spring.html">
+            <a href="../VI. Integration/22. Remoting and web services using Spring.html">
+            
+                    
+                    22. Remoting and web services using Spring
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="../VI. Integration/22.1. Introduction.html">
+            <a href="../VI. Integration/22.1. Introduction.html">
+            
+                    
+                    22.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="../VI. Integration/22.2. Exposing services using RMI.html">
+            <a href="../VI. Integration/22.2. Exposing services using RMI.html">
+            
+                    
+                    22.2. Exposing services using RMI
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="../VI. Integration/22.3. Using Hessian or Burlap to remotely call services via HTTP.html">
+            <a href="../VI. Integration/22.3. Using Hessian or Burlap to remotely call services via HTTP.html">
+            
+                    
+                    22.3. Using Hessian or Burlap to remotely call services via HTTP
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="../VI. Integration/22.4. Exposing services using HTTP invokers.html">
+            <a href="../VI. Integration/22.4. Exposing services using HTTP invokers.html">
+            
+                    
+                    22.4. Exposing services using HTTP invokers
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="../VI. Integration/22.5. Web services.html">
+            <a href="../VI. Integration/22.5. Web services.html">
+            
+                    
+                    22.5. Web services
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.6" data-path="../VI. Integration/22.6. JMS.html">
+            <a href="../VI. Integration/22.6. JMS.html">
+            
+                    
+                    22.6. JMS
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.7" data-path="../VI. Integration/22.7. AMQP.html">
+            <a href="../VI. Integration/22.7. AMQP.html">
+            
+                    
+                    22.7. AMQP
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.8" data-path="../VI. Integration/22.8. Auto-detection is not implemented for remote interfaces.html">
+            <a href="../VI. Integration/22.8. Auto-detection is not implemented for remote interfaces.html">
+            
+                    
+                    22.8. Auto-detection is not implemented for remote interfaces
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.9" data-path="../VI. Integration/22.9. Considerations when choosing a technology.html">
+            <a href="../VI. Integration/22.9. Considerations when choosing a technology.html">
+            
+                    
+                    22.9. Considerations when choosing a technology
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.10" data-path="../VI. Integration/22.10. Accessing RESTful services on the Client.html">
+            <a href="../VI. Integration/22.10. Accessing RESTful services on the Client.html">
+            
+                    
+                    22.10. Accessing RESTful services on the Client
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../VI. Integration/23. Enterprise JavaBeans integration.html">
+            <a href="../VI. Integration/23. Enterprise JavaBeans integration.html">
+            
+                    
+                    23. Enterprise JavaBeans (EJB) integration
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="../VI. Integration/23.1. Introduction.html">
+            <a href="../VI. Integration/23.1. Introduction.html">
+            
+                    
+                    23.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="../VI. Integration/23.2. Accessing EJBs.html">
+            <a href="../VI. Integration/23.2. Accessing EJBs.html">
+            
+                    
+                    23.2. Accessing EJBs
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="../VI. Integration/23.3. Using Spring’s EJB implementation support classes.html">
+            <a href="../VI. Integration/23.3. Using Spring’s EJB implementation support classes.html">
+            
+                    
+                    23.3. Using Spring’s EJB implementation support classes
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../VI. Integration/24. JMS Java Message Service.html">
+            <a href="../VI. Integration/24. JMS Java Message Service.html">
+            
+                    
+                    24. JMS (Java Message Service)
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="../VI. Integration/24.1. Introduction.html">
+            <a href="../VI. Integration/24.1. Introduction.html">
+            
+                    
+                    24.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="../VI. Integration/24.2. Using Spring JMS.html">
+            <a href="../VI. Integration/24.2. Using Spring JMS.html">
+            
+                    
+                    24.2. Using Spring JMS
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="../VI. Integration/24.3. Sending a Message.html">
+            <a href="../VI. Integration/24.3. Sending a Message.html">
+            
+                    
+                    24.3. Sending a Message
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.4" data-path="../VI. Integration/24.4. Receiving a message.html">
+            <a href="../VI. Integration/24.4. Receiving a message.html">
+            
+                    
+                    24.4. Receiving a message
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.5" data-path="../VI. Integration/24.5. Support for JCA Message Endpoints.html">
+            <a href="../VI. Integration/24.5. Support for JCA Message Endpoints.html">
+            
+                    
+                    24.5. Support for JCA Message Endpoints
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.6" data-path="../VI. Integration/24.6. Annotation-driven listener endpoints.html">
+            <a href="../VI. Integration/24.6. Annotation-driven listener endpoints.html">
+            
+                    
+                    24.6. Annotation-driven listener endpoints
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.7" data-path="../VI. Integration/24.7. JMS Namespace Support.html">
+            <a href="../VI. Integration/24.7. JMS Namespace Support.html">
+            
+                    
+                    24.7. JMS Namespace Support
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../VI. Integration/25. JMX.html">
+            <a href="../VI. Integration/25. JMX.html">
+            
+                    
+                    25. JMX
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="../VI. Integration/25.1. Introduction.html">
+            <a href="../VI. Integration/25.1. Introduction.html">
+            
+                    
+                    25.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="../VI. Integration/25.2. Exporting your beans to JMX.html">
+            <a href="../VI. Integration/25.2. Exporting your beans to JMX.html">
+            
+                    
+                    25.2. Exporting your beans to JMX
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="../VI. Integration/25.3. Controlling the management interface of your beans.html">
+            <a href="../VI. Integration/25.3. Controlling the management interface of your beans.html">
+            
+                    
+                    25.3. Controlling the management interface of your beans
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.4" data-path="../VI. Integration/25.4. Controlling the ObjectNames for your beans.html">
+            <a href="../VI. Integration/25.4. Controlling the ObjectNames for your beans.html">
+            
+                    
+                    25.4. Controlling the ObjectNames for your beans
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.5" data-path="../VI. Integration/25.5. JSR-160 Connectors.html">
+            <a href="../VI. Integration/25.5. JSR-160 Connectors.html">
+            
+                    
+                    25.5. JSR-160 Connectors
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.6" data-path="../VI. Integration/25.6. Accessing MBeans via Proxies.html">
+            <a href="../VI. Integration/25.6. Accessing MBeans via Proxies.html">
+            
+                    
+                    25.6. Accessing MBeans via Proxies
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.7" data-path="../VI. Integration/25.7. Notifications.html">
+            <a href="../VI. Integration/25.7. Notifications.html">
+            
+                    
+                    25.7. Notifications
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.8" data-path="../VI. Integration/25.8. Further Resources.html">
+            <a href="../VI. Integration/25.8. Further Resources.html">
+            
+                    
+                    25.8. Further Resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../VI. Integration/26. JCA CCI.html">
+            <a href="../VI. Integration/26. JCA CCI.html">
+            
+                    
+                    26. JCA CCI
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../VI. Integration/26.1. Introduction.html">
+            <a href="../VI. Integration/26.1. Introduction.html">
+            
+                    
+                    26.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../VI. Integration/26.2. Configuring CCI.html">
+            <a href="../VI. Integration/26.2. Configuring CCI.html">
+            
+                    
+                    26.2. Configuring CCI
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../VI. Integration/26.3. Using Spring’s CCI access support.html">
+            <a href="../VI. Integration/26.3. Using Spring’s CCI access support.html">
+            
+                    
+                    26.3. Using Spring’s CCI access support
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="../VI. Integration/26.4. Modeling CCI access as operation objects.html">
+            <a href="../VI. Integration/26.4. Modeling CCI access as operation objects.html">
+            
+                    
+                    26.4. Modeling CCI access as operation objects
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="../VI. Integration/26.5. Transactions.html">
+            <a href="../VI. Integration/26.5. Transactions.html">
+            
+                    
+                    26.5. Transactions
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../VI. Integration/27. Email.html">
+            <a href="../VI. Integration/27. Email.html">
+            
+                    
+                    27. Email
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../VI. Integration/27.1. Introduction.html">
+            <a href="../VI. Integration/27.1. Introduction.html">
+            
+                    
+                    27.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../VI. Integration/27.2. Usage.html">
+            <a href="../VI. Integration/27.2. Usage.html">
+            
+                    
+                    27.2. Usage
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../VI. Integration/27.3. Using the JavaMail MimeMessageHelper.html">
+            <a href="../VI. Integration/27.3. Using the JavaMail MimeMessageHelper.html">
+            
+                    
+                    27.3. Using the JavaMail MimeMessageHelper
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../VI. Integration/28. Task Execution and Scheduling.html">
+            <a href="../VI. Integration/28. Task Execution and Scheduling.html">
+            
+                    
+                    28. Task Execution and Scheduling
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../VI. Integration/28.1. Introduction.html">
+            <a href="../VI. Integration/28.1. Introduction.html">
+            
+                    
+                    28.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../VI. Integration/28.2. The Spring TaskExecutor abstraction.html">
+            <a href="../VI. Integration/28.2. The Spring TaskExecutor abstraction.html">
+            
+                    
+                    28.2. The Spring TaskExecutor abstraction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../VI. Integration/28.3. The Spring TaskScheduler abstraction.html">
+            <a href="../VI. Integration/28.3. The Spring TaskScheduler abstraction.html">
+            
+                    
+                    28.3. The Spring TaskScheduler abstraction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../VI. Integration/28.4. Annotation Support for Scheduling and Asynchronous Execution.html">
+            <a href="../VI. Integration/28.4. Annotation Support for Scheduling and Asynchronous Execution.html">
+            
+                    
+                    28.4. Annotation Support for Scheduling and Asynchronous Execution
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../VI. Integration/28.5. The Task Namespace.html">
+            <a href="../VI. Integration/28.5. The Task Namespace.html">
+            
+                    
+                    28.5. The Task Namespace
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.6" data-path="../VI. Integration/28.6. Using the Quartz Scheduler.html">
+            <a href="../VI. Integration/28.6. Using the Quartz Scheduler.html">
+            
+                    
+                    28.6. Using the Quartz Scheduler
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../VI. Integration/29. Dynamic language support.html">
+            <a href="../VI. Integration/29. Dynamic language support.html">
+            
+                    
+                    29. Dynamic language support
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.8.1" data-path="../VI. Integration/29.1. Introduction.html">
+            <a href="../VI. Integration/29.1. Introduction.html">
+            
+                    
+                    29.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.2" data-path="../VI. Integration/29.2. A first example.html">
+            <a href="../VI. Integration/29.2. A first example.html">
+            
+                    
+                    29.2. A first example
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.3" data-path="../VI. Integration/29.3. Defining beans that are backed by dynamic languages.html">
+            <a href="../VI. Integration/29.3. Defining beans that are backed by dynamic languages.html">
+            
+                    
+                    29.3. Defining beans that are backed by dynamic languages
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.4" data-path="../VI. Integration/29.4. Scenarios.html">
+            <a href="../VI. Integration/29.4. Scenarios.html">
+            
+                    
+                    29.4. Scenarios
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.5" data-path="../VI. Integration/29.5. Bits and bobs.html">
+            <a href="../VI. Integration/29.5. Bits and bobs.html">
+            
+                    
+                    29.5. Bits and bobs
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.6" data-path="../VI. Integration/29.6. Further Resources.html">
+            <a href="../VI. Integration/29.6. Further Resources.html">
+            
+                    
+                    29.6. Further Resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../VI. Integration/30. Cache Abstraction.html">
+            <a href="../VI. Integration/30. Cache Abstraction.html">
+            
+                    
+                    30. Cache Abstraction
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.9.1" data-path="../VI. Integration/30.1. Introduction.html">
+            <a href="../VI. Integration/30.1. Introduction.html">
+            
+                    
+                    30.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.2" data-path="../VI. Integration/30.2. Understanding the cache abstraction.html">
+            <a href="../VI. Integration/30.2. Understanding the cache abstraction.html">
+            
+                    
+                    30.2. Understanding the cache abstraction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.3" data-path="../VI. Integration/30.3. Declarative annotation-based caching.html">
+            <a href="../VI. Integration/30.3. Declarative annotation-based caching.html">
+            
+                    
+                    30.3. Declarative annotation-based caching
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.4" data-path="../VI. Integration/30.4. JCache JSR-107 annotations.html">
+            <a href="../VI. Integration/30.4. JCache JSR-107 annotations.html">
+            
+                    
+                    30.4. JCache (JSR-107) annotations
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.5" data-path="../VI. Integration/30.5. Declarative XML-based caching.html">
+            <a href="../VI. Integration/30.5. Declarative XML-based caching.html">
+            
+                    
+                    30.5. Declarative XML-based caching
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.6" data-path="../VI. Integration/30.6. Configuring the cache storage.html">
+            <a href="../VI. Integration/30.6. Configuring the cache storage.html">
+            
+                    
+                    30.6. Configuring the cache storage
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.7" data-path="../VI. Integration/30.7. Plugging-in different back-end caches.html">
+            <a href="../VI. Integration/30.7. Plugging-in different back-end caches.html">
+            
+                    
+                    30.7. Plugging-in different back-end caches
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.8" data-path="../VI. Integration/30.8. How can I set the TTL TTI Eviction policy XXX feature.html">
+            <a href="../VI. Integration/30.8. How can I set the TTL TTI Eviction policy XXX feature.html">
+            
+                    
+                    30.8. How can I set the TTL/TTI/Eviction policy/XXX feature?
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../VII. Appendices/">
+            <a href="../VII. Appendices/">
+            
+                    
+                    VII. Appendices
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../VII. Appendices/31. Migrating to Spring Framework 4.0.html">
+            <a href="../VII. Appendices/31. Migrating to Spring Framework 4.0.html">
+            
+                    
+                    31. Migrating to Spring Framework 4.0
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../VII. Appendices/32. Classic Spring Usage.html">
+            <a href="../VII. Appendices/32. Classic Spring Usage.html">
+            
+                    
+                    32. Classic Spring Usage
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../VII. Appendices/32.1. Classic ORM usage.html">
+            <a href="../VII. Appendices/32.1. Classic ORM usage.html">
+            
+                    
+                    32.1. Classic ORM usage
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../VII. Appendices/32.2. Classic Spring MVC.html">
+            <a href="../VII. Appendices/32.2. Classic Spring MVC.html">
+            
+                    
+                    32.2. Classic Spring MVC
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../VII. Appendices/32.3. JMS Usage.html">
+            <a href="../VII. Appendices/32.3. JMS Usage.html">
+            
+                    
+                    32.3. JMS Usage
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../VII. Appendices/33. Classic Spring AOP Usage.html">
+            <a href="../VII. Appendices/33. Classic Spring AOP Usage.html">
+            
+                    
+                    33. Classic Spring AOP Usage
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../VII. Appendices/33.1. Pointcut API in Spring.html">
+            <a href="../VII. Appendices/33.1. Pointcut API in Spring.html">
+            
+                    
+                    33.1. Pointcut API in Spring
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../VII. Appendices/33.2. Advice API in Spring.html">
+            <a href="../VII. Appendices/33.2. Advice API in Spring.html">
+            
+                    
+                    33.2. Advice API in Spring
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../VII. Appendices/33.3. Advisor API in Spring.html">
+            <a href="../VII. Appendices/33.3. Advisor API in Spring.html">
+            
+                    
+                    33.3. Advisor API in Spring
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="../VII. Appendices/33.4. Using the ProxyFactoryBean to create AOP proxies.html">
+            <a href="../VII. Appendices/33.4. Using the ProxyFactoryBean to create AOP proxies.html">
+            
+                    
+                    33.4. Using the ProxyFactoryBean to create AOP proxies
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.5" data-path="../VII. Appendices/33.5. Concise proxy definitions.html">
+            <a href="../VII. Appendices/33.5. Concise proxy definitions.html">
+            
+                    
+                    33.5. Concise proxy definitions
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.6" data-path="../VII. Appendices/33.6. Creating AOP proxies programmatically with the ProxyFactory.html">
+            <a href="../VII. Appendices/33.6. Creating AOP proxies programmatically with the ProxyFactory.html">
+            
+                    
+                    33.6. Creating AOP proxies programmatically with the ProxyFactory
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.7" data-path="../VII. Appendices/33.7. Manipulating advised objects.html">
+            <a href="../VII. Appendices/33.7. Manipulating advised objects.html">
+            
+                    
+                    33.7. Manipulating advised objects
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.8" data-path="../VII. Appendices/33.8. Using the `autoproxy` facility.html">
+            <a href="../VII. Appendices/33.8. Using the `autoproxy` facility.html">
+            
+                    
+                    33.8. Using the "autoproxy" facility
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.9" data-path="../VII. Appendices/33.9. Using TargetSources.html">
+            <a href="../VII. Appendices/33.9. Using TargetSources.html">
+            
+                    
+                    33.9. Using TargetSources
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.10" data-path="../VII. Appendices/33.10. Defining new Advice types.html">
+            <a href="../VII. Appendices/33.10. Defining new Advice types.html">
+            
+                    
+                    33.10. Defining new Advice types
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.11" data-path="../VII. Appendices/33.11. Further resources.html">
+            <a href="../VII. Appendices/33.11. Further resources.html">
+            
+                    
+                    33.11. Further resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../VII. Appendices/34. XML Schema-based configuration.html">
+            <a href="../VII. Appendices/34. XML Schema-based configuration.html">
+            
+                    
+                    34. XML Schema-based configuration
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../VII. Appendices/34.1. Introduction.html">
+            <a href="../VII. Appendices/34.1. Introduction.html">
+            
+                    
+                    34.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../VII. Appendices/34.2. XML Schema-based configuration.html">
+            <a href="../VII. Appendices/34.2. XML Schema-based configuration.html">
+            
+                    
+                    34.2. XML Schema-based configuration
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../VII. Appendices/35. Extensible XML authoring.html">
+            <a href="../VII. Appendices/35. Extensible XML authoring.html">
+            
+                    
+                    35. Extensible XML authoring
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../VII. Appendices/35.1. Introduction.html">
+            <a href="../VII. Appendices/35.1. Introduction.html">
+            
+                    
+                    35.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../VII. Appendices/35.2. Authoring the schema.html">
+            <a href="../VII. Appendices/35.2. Authoring the schema.html">
+            
+                    
+                    35.2. Authoring the schema
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../VII. Appendices/35.3. Coding a NamespaceHandler.html">
+            <a href="../VII. Appendices/35.3. Coding a NamespaceHandler.html">
+            
+                    
+                    35.3. Coding a NamespaceHandler
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../VII. Appendices/35.4. BeanDefinitionParser.html">
+            <a href="../VII. Appendices/35.4. BeanDefinitionParser.html">
+            
+                    
+                    35.4. BeanDefinitionParser
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../VII. Appendices/35.5. Registering the handler and the schema.html">
+            <a href="../VII. Appendices/35.5. Registering the handler and the schema.html">
+            
+                    
+                    35.5. Registering the handler and the schema
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="../VII. Appendices/35.6. Using a custom extension in your Spring XML configuration.html">
+            <a href="../VII. Appendices/35.6. Using a custom extension in your Spring XML configuration.html">
+            
+                    
+                    35.6. Using a custom extension in your Spring XML configuration
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="../VII. Appendices/35.7. Meatier examples.html">
+            <a href="../VII. Appendices/35.7. Meatier examples.html">
+            
+                    
+                    35.7. Meatier examples
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.8" data-path="../VII. Appendices/35.8. Further Resources.html">
+            <a href="../VII. Appendices/35.8. Further Resources.html">
+            
+                    
+                    35.8. Further Resources
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../VII. Appendices/36. spring.tld.html">
+            <a href="../VII. Appendices/36. spring.tld.html">
+            
+                    
+                    36. spring.tld
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../VII. Appendices/36.1. Introduction.html">
+            <a href="../VII. Appendices/36.1. Introduction.html">
+            
+                    
+                    36.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.2" data-path="../VII. Appendices/36.2. the bind tag.html">
+            <a href="../VII. Appendices/36.2. the bind tag.html">
+            
+                    
+                    36.2. the bind tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="../VII. Appendices/36.3. the escapeBody tag.html">
+            <a href="../VII. Appendices/36.3. the escapeBody tag.html">
+            
+                    
+                    36.3. the escapeBody tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.4" data-path="../VII. Appendices/36.4. the hasBindErrors tag.html">
+            <a href="../VII. Appendices/36.4. the hasBindErrors tag.html">
+            
+                    
+                    36.4. the hasBindErrors tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.5" data-path="../VII. Appendices/36.5. the htmlEscape tag.html">
+            <a href="../VII. Appendices/36.5. the htmlEscape tag.html">
+            
+                    
+                    36.5. the htmlEscape tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.6" data-path="../VII. Appendices/36.6. the message tag.html">
+            <a href="../VII. Appendices/36.6. the message tag.html">
+            
+                    
+                    36.6. the message tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.7" data-path="../VII. Appendices/36.7. the nestedPath tag.html">
+            <a href="../VII. Appendices/36.7. the nestedPath tag.html">
+            
+                    
+                    36.7. the nestedPath tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.8" data-path="../VII. Appendices/36.8. the theme tag.html">
+            <a href="../VII. Appendices/36.8. the theme tag.html">
+            
+                    
+                    36.8. the theme tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.9" data-path="../VII. Appendices/36.9. the transform tag.html">
+            <a href="../VII. Appendices/36.9. the transform tag.html">
+            
+                    
+                    36.9. the transform tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.10" data-path="../VII. Appendices/36.10. the url tag.html">
+            <a href="../VII. Appendices/36.10. the url tag.html">
+            
+                    
+                    36.10. the url tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.11" data-path="../VII. Appendices/36.11. the eval tag.html">
+            <a href="../VII. Appendices/36.11. the eval tag.html">
+            
+                    
+                    36.11. the eval tag
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../VII. Appendices/37. spring-form.tld.html">
+            <a href="../VII. Appendices/37. spring-form.tld.html">
+            
+                    
+                    37. spring-form.tld
+            </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.7.1" data-path="../VII. Appendices/37.1. Introduction].html">
+            <a href="../VII. Appendices/37.1. Introduction].html">
+            
+                    
+                    37.1. Introduction
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.2" data-path="../VII. Appendices/37.2. the checkbox tag.html">
+            <a href="../VII. Appendices/37.2. the checkbox tag.html">
+            
+                    
+                    37.2. the checkbox tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.3" data-path="../VII. Appendices/37.3. the checkboxes tag.html">
+            <a href="../VII. Appendices/37.3. the checkboxes tag.html">
+            
+                    
+                    37.3. the checkboxes tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.4" data-path="../VII. Appendices/37.4. the errors tag.html">
+            <a href="../VII. Appendices/37.4. the errors tag.html">
+            
+                    
+                    37.4. the errors tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.5" data-path="../VII. Appendices/37.5. the form tag.html">
+            <a href="../VII. Appendices/37.5. the form tag.html">
+            
+                    
+                    37.5. the form tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.6" data-path="../VII. Appendices/37.6. the hidden tag.html">
+            <a href="../VII. Appendices/37.6. the hidden tag.html">
+            
+                    
+                    37.6. the hidden tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.7" data-path="../VII. Appendices/37.7. the input tag.html">
+            <a href="../VII. Appendices/37.7. the input tag.html">
+            
+                    
+                    37.7. the input tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.8" data-path="../VII. Appendices/37.8. the label tag.html">
+            <a href="../VII. Appendices/37.8. the label tag.html">
+            
+                    
+                    37.8. the label tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.9" data-path="../VII. Appendices/37.9. the option tag.html">
+            <a href="../VII. Appendices/37.9. the option tag.html">
+            
+                    
+                    37.9. the option tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.10" data-path="../VII. Appendices/37.10. the options tag.html">
+            <a href="../VII. Appendices/37.10. the options tag.html">
+            
+                    
+                    37.10. the options tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.11" data-path="../VII. Appendices/37.11. the password tag.html">
+            <a href="../VII. Appendices/37.11. the password tag.html">
+            
+                    
+                    37.11. the password tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.12" data-path="../VII. Appendices/37.12. the radiobutton tag.html">
+            <a href="../VII. Appendices/37.12. the radiobutton tag.html">
+            
+                    
+                    37.12. the radiobutton tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.13" data-path="../VII. Appendices/37.13. the radiobuttons tag.html">
+            <a href="../VII. Appendices/37.13. the radiobuttons tag.html">
+            
+                    
+                    37.13. the radiobuttons tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.14" data-path="../VII. Appendices/37.14. the select tag.html">
+            <a href="../VII. Appendices/37.14. the select tag.html">
+            
+                    
+                    37.14. the select tag
+            </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.15" data-path="../VII. Appendices/37.15. the textarea tag.html">
+            <a href="../VII. Appendices/37.15. the textarea tag.html">
+            
+                    
+                    37.15. the textarea tag
+            </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://book.comptechs.cn" target="_blank" class="gitbook-link"><strong>开源图书(OpenBooks)</strong></a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"移除不推荐的包和方法","level":"1.3.1.2","depth":3,"next":{"title":"Java 8(以及6和7)","level":"1.3.1.3","depth":3,"path":"II. What’s New in Spring Framework 4.x/3.3. Java 8  as well as 6 and 7.md","ref":"II. What’s New in Spring Framework 4.x/3.3. Java 8  as well as 6 and 7.md","articles":[]},"previous":{"title":"改进的入门体验","level":"1.3.1.1","depth":3,"path":"II. What’s New in Spring Framework 4.x/3.1. Improved Getting Started Experience.md","ref":"II. What’s New in Spring Framework 4.x/3.1. Improved Getting Started Experience.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-vmlite@git+https://github.com/vmlite/gitbook-plugin-theme-vmlite.git"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-vmlite":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Spring Framework 4.x参考文档","language":"zh-hans","gitbook":"*"},"file":{"path":"II. What’s New in Spring Framework 4.x/3.2. Removed Deprecated Packages and Methods.md","mtime":"2020-10-18T14:16:17.160Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-18T14:16:57.882Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="//cdn.jsdelivr.net/npm/gitbook-plugin-theme-default@1.0.7/_assets/website/gitbook.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/gitbook-plugin-theme-default@1.0.7/_assets/website/theme.js"></script>
+    
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152683495-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-152683495-1'); 
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?b6193f769a96b5f12f441649fc8d4e49";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    </body>
+</html>
+
